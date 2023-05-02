@@ -1,22 +1,5 @@
 import React, { Component } from 'react';
 
-// export const App = () => {
-//   return (
-//     <div
-//       style={{
-//         height: '100vh',
-//         display: 'flex',
-//         justifyContent: 'center',
-//         alignItems: 'center',
-//         fontSize: 40,
-//         color: '#010101'
-//       }}
-//     >
-//       React homework template
-//     </div>
-//   );
-// };
-
 class App extends Component {
   state = {
     good: 0,
@@ -26,10 +9,17 @@ class App extends Component {
 
   addFeedback = label => {
     this.setState(prevState => {
-      console.log(prevState[label]);
-
       return { [label]: prevState[label] + 1 };
     });
+  };
+
+  countTotalFeedback = () => {
+    const TotalFeedback = Object.values(this.state).reduce((acc, value) => {
+      acc = acc + value;
+      return acc;
+    }, 0);
+
+    return TotalFeedback;
   };
 
   render() {
@@ -51,6 +41,8 @@ class App extends Component {
           <li>Good: {this.state.good}</li>
           <li>Neutral: {this.state.neutral}</li>
           <li>Bad: {this.state.bad}</li>
+
+          <li>Total: {this.countTotalFeedback()}</li>
         </ul>
       </>
     );
