@@ -44,11 +44,11 @@ class App extends Component {
         </Section>
 
         <Section title="Statistics">
-          {this.countTotalFeedback() == 0 && (
+          {this.countTotalFeedback() === 0 && (
             <Notification message="There is no feedback" />
           )}
 
-          {this.countTotalFeedback() != 0 && (
+          {this.countTotalFeedback() !== 0 && (
             <Statistics
               good={this.state.good}
               neutral={this.state.neutral}
